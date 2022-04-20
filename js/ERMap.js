@@ -68,7 +68,7 @@ L.marker([10,10], {
 }).addTo(map).bindPopup("-100-100");
 L.marker([0, 0]).addTo(map).bindPopup("Origin");
 
-map.setMaxBounds([[-3000, -3000], [7000, 7000]]);
+map.setMaxBounds([[-1000, -1000], [5000, 5000]]);
 
 map.on("click", addMarker);
 

@@ -16,7 +16,7 @@ window.addEventListener('load', function(e) {
 
 }, false);
 
-let mapBounds = 2000;
+let mapBounds = 1000
 let myBounds = [[0, 0],[mapBounds, mapBounds]];
 
 L.CRS.MySimple = L.extend({}, L.CRS.Simple, {

@@ -1,22 +1,11 @@
-// Check if a new cache is available on page load.
-window.addEventListener('load', function(e) {
+let url = ('https://' + window.location.hostname + '/');
 
-  window.applicationCache.addEventListener('updateready', function(e) {
-    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-      // Browser downloaded a new app cache.
-      // Swap it in and reload the page to get the new hotness.
-      window.applicationCache.swapCache();
-      if (confirm('A new version of this site is available. Load it?')) {
-        window.location.reload();
-      }
-    } else {
-      // Manifest didn't changed. Nothing new to server.
-    }
-  }, false);
-
-}, false);
-
-let mapBounds = 1000
+let mapSize = 19280;
+let tileSize = 256;
+let mapScale = mapSize / tileSize;
+let mapOffset = mapSize / mapScale / 2;
+let halfTile = tileSize / 2;
+let mapBounds = 1200;
 let myBounds = [[0, 0],[mapBounds, mapBounds]];
 
 L.CRS.MySimple = L.extend({}, L.CRS.Simple, {
@@ -78,6 +67,8 @@ L.marker([10,10], {
   icon: cave,
 }).addTo(map).bindPopup("-100-100");
 L.marker([0, 0]).addTo(map).bindPopup("Origin");
+
+map.setMaxBounds([[-3000, -3000], [7000, 7000]]);
 
 map.on("click", addMarker);
 

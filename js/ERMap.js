@@ -1,3 +1,6 @@
+let mapBounds = 2000;
+let myBounds = [[0, 0],[mapBounds, mapBounds]];
+
 L.CRS.MySimple = L.extend({}, L.CRS.Simple, {
   transformation: new L.Transformation(1/10, 0, -1/10, 142.5)
 });
@@ -50,7 +53,7 @@ var Cave1 = [1, 1];
 
 //legend.addTo(map);
 
-L.tileLayer('./{z}/tile_{x}_{y}.png', {zoomControl: false, noWrap: true, zoom: 8, zoomSnap: 0, maxZoom: 7, tileSize: 256, zoomOffset: 0, width: 19290, height: 18238, attribution: 'Cowsox'}).addTo(map);
+L.tileLayer('./{z}/tile_{x}_{y}.png', {bounds: myBounds, zoomControl: false, noWrap: true, zoom: 8, zoomSnap: 0, maxZoom: 7, tileSize: 256, zoomOffset: 0, width: 19290, height: 18238, attribution: 'Cowsox'}).addTo(map);
 // L.tileLayer('Unique/Elden_Ring_Map_Upscaled/{z}/{z}-{x}-{y}.jpg', {noWrap: true, crs: L.CRS.Simple, zoom: 5, bounds: bounds, MaxBounds: bounds, zoomSnap: 0, maxZoom: 6, tileSize: 256, zoomOffset: 0, width: 15175, height: 14280, attribution: 'Cowsox'}).addTo(map);
 L.marker(Cave1, {icon: cathedral}).addTo(map).bindPopup("0-0");
 L.marker([10,10], {
